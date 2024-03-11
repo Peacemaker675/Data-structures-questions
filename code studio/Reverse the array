@@ -1,0 +1,12 @@
+#include <bits/stdc++.h>
+using namespace std;
+void reverseArray(vector<int> &arr, int m) {
+  int n = arr.size();
+  for (int i = m + 1; i < n; i++) {
+    if (i > (m + n) / 2)
+      break;
+    if (i > m) {
+      swap(arr[i], arr[n + m - i]);
+    }
+  }
+}
