@@ -1,0 +1,40 @@
+bool isPossibleSol(vector<int> &arr, int n, int m, int mid) {
+  int studentCount = 1;
+  int pageCount = 0;
+  for (int i = 0; i < n; i++) {
+    if (pageCount + arr[i] <= mid) {
+      pageCount += arr[i];
+    } else {
+      studentCount++;
+      if (studentCount > m || arr[i] > mid) {
+        return false;
+      }
+      pageCount = arr[i];
+    }
+  }
+  return true;
+}
+
+int findPages(vector<int> &arr, int n, int m) {
+    if(n<m){
+        return -1;
+    }
+  int start = 0;
+  int sum = 0;
+  for (int i = 0; i < n; i++) {
+    sum +=arr[i];
+  }
+  int end = sum;
+  int ans = -1;
+  int mid = start + (end - start) / 2;
+  while (start <= end) {
+    if (isPossibleSol(arr, n, m, mid)) {
+      ans = mid;
+      end = mid - 1;
+    } else {
+      start = mid + 1;
+    }
+    mid = start + (end - start) / 2;
+  }
+  return ans;
+}
