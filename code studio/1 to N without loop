@@ -1,0 +1,11 @@
+vector<int> printNos(int x) {
+  vector<int> arr;
+  if (x == 1) {
+    arr.push_back(x);
+    return arr;
+  } else {
+    arr = printNos(x - 1);
+    arr.push_back(x);
+    return arr;
+  }
+}
