@@ -1,0 +1,45 @@
+
+// recursive method
+class Solution {
+public:
+    bool check(const string& str, int start, int end) {
+        if (start < end) {
+            if (str[start] == str[end]) {
+                return check(str, start + 1, end - 1);
+            }else {
+                return false;
+            }
+        }
+        return true;
+    }
+    bool isPalindrome(string s) {
+
+        transform(s.begin(), s.end(), s.begin(), ::tolower);
+        s.erase(remove_if(s.begin(), s.end(), [](char c) { return !isalnum(c); }), s.end());
+        for (char c : s) {
+            cout << c;
+        }
+        int start = 0;
+        int end = s.size() - 1;
+        return check(s, start, end);
+    }
+};
+
+//optimal method
+class Solution {
+public:
+    bool isPalindrome(string s) {
+        int left = 0, right = s.length() - 1;
+        while (left < right) {
+            while (left < right && !isalnum(s[left])) // Skip non-alphanumeric characters from the left
+                left++;
+            while (left < right && !isalnum(s[right])) // Skip non-alphanumeric characters from the right
+                right--;
+            if (tolower(s[left]) != tolower(s[right])) // Compare ignoring cases
+                return false;
+            left++;
+            right--;
+        }
+        return true;
+    }
+};
