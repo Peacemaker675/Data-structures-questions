@@ -1,0 +1,21 @@
+long long factorial(long long num ){
+    if(num==0){
+        return 1;
+    }else{
+        return num*factorial(num-1);
+    }
+}
+vector<long long> factorialNumbers(long long n) {
+   vector<long long>nums;
+   long long i=1;
+   long long j=1;
+   nums.push_back(1);
+   while(j<=n){
+       i++;
+       j=factorial(i);
+       if(j<=n){
+           nums.push_back(j);
+       }
+   }
+   return nums;
+}
