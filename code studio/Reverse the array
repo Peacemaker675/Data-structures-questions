@@ -10,3 +10,19 @@ void reverseArray(vector<int> &arr, int m) {
     }
   }
 }
+
+// reverse an array question 
+#include<bits/stdc++.h>
+vector<int> reverseArray(int n, vector<int> &nums)
+{
+    int start =0;
+    int end =n-1;
+    while(start<end){
+        swap(nums[start],nums[end]);
+        start++;
+        end--;
+    }
+    return nums;
+}
+//using reccursive approach 
+
