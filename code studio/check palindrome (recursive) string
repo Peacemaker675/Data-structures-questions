@@ -1,0 +1,16 @@
+bool check(string& str,int n,int m){
+    if(str[n]!=str[m]){
+        return false;
+    }else{
+        if (n < m) {
+          check(str, n + 1, m - 1);
+        }else{
+            return true;
+        }
+    }
+}
+bool isPalindrome(string& str) {
+    int n=0;
+    int m=str.size()-1;
+    return check(str,n, m);
+}
