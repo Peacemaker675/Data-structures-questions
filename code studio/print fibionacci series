@@ -1,0 +1,13 @@
+void fibionacci(vector<int>& nums,int n,int a,int b){
+    if(n<=0){
+        return;
+    }
+    nums.push_back(a);
+    fibionacci(nums,n-1,b,b+a);
+}
+vector<int> generateFibonacciNumbers(int n) {
+    vector<int>nums;
+    int a=0,b=1;
+    fibionacci(nums,n,a,a+b);
+    return nums;
+}
