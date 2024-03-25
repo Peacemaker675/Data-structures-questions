@@ -1,0 +1,11 @@
+vector<int> countFrequency(int n, int x, vector<int> &nums){
+    vector<int>arr;
+    unordered_map<int,int>mpp;
+    for(int i=0;i<n;i++){
+        mpp[nums[i]]++;
+    }
+    for(int i=1;i<=n;i++){
+        arr.push_back(mpp[i]);
+    }
+    return arr;
+}
