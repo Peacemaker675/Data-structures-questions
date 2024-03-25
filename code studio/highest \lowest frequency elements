@@ -1,0 +1,22 @@
+vector<int> getFrequencies(vector<int> &v) {
+  vector<int> arr;
+  unordered_map<int, int> mpp;
+  for (int i = 0; i < v.size(); i++) {
+    mpp[v[i]]++;
+  }
+  int max = 0, maxFreq = 0;
+  int min = 0, minFreq = INT_MAX;
+  for (const auto &[key, freq] : mpp) {
+    if (freq > maxFreq || (freq == maxFreq && key < max)) {
+      max = key;
+      maxFreq = freq;
+    }
+    if (freq < minFreq || (freq == minFreq && key < min)) {
+      min = key;
+      minFreq = freq;
+    }
+  }
+  arr.push_back(max);
+  arr.push_back(min);
+  return arr;
+}
