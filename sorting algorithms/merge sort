@@ -1,0 +1,41 @@
+void merge(int arr[], int l, int mid, int r) {
+  int temp[r - l + 1]; // Allocate memory for temporary array
+  int left = l;
+  int right = mid + 1;
+  int idx = 0; // Index for temporary array
+
+  // Merge the two subarrays into temp[]
+  while (left <= mid && right <= r) {
+    if (arr[left] <= arr[right]) {
+      temp[idx++] = arr[left++];
+    } else {
+      temp[idx++] = arr[right++];
+    }
+  }
+
+  // Copy the remaining elements of left subarray, if any
+  while (left <= mid) {
+    temp[idx++] = arr[left++];
+  }
+
+  // Copy the remaining elements of right subarray, if any
+  while (right <= r) {
+    temp[idx++] = arr[right++];
+  }
+
+  // Copy back the merged elements from temp[] to arr[]
+  for (int i = 0; i < r - l + 1; i++) {
+    arr[l + i] = temp[i];
+  }
+}
+
+void mergeSort(int arr[], int l, int r) {
+  if (l >= r) {
+    return; // Base case: If there's only one element or none, return
+  }
+
+  int mid = l + (r - l) / 2;
+  mergeSort(arr, l, mid);     // Sort left subarray
+  mergeSort(arr, mid + 1, r); // Sort right subarray
+  merge(arr, l, mid, r);      // Merge the sorted halves
+}
