@@ -1,0 +1,42 @@
+int largestElement(vector<int> &arr, int n) {
+  int max = INT_MIN;
+  int maxIndex;
+  for (int i = 0; i < n; i++) {
+    if (arr[i] > max) {
+      max = arr[i];
+      maxIndex = i;
+    }
+  }
+  return maxIndex;
+}
+int smallestElement(vector<int> &arr, int n) {
+  int min = INT_MAX;
+  int minIndex;
+  for (int i = 0; i < n; i++) {
+    if (arr[i] < min) {
+      min = arr[i];
+      minIndex = i;
+    }
+  }
+  return minIndex;
+}
+vector<int> getSecondOrderElements(int n, vector<int> a) {
+  vector<int> output;
+  int max = largestElement(a, n);
+  int min = smallestElement(a, n);
+  int smin = INT_MAX;
+  int smax = INT_MIN;
+  for (int i = 0; i < n; i++) {
+    if (i == max || i == min)
+      continue;
+    if (a[i] > smax) {
+      smax = a[i];
+    }
+    if (a[i] < smin) {
+      smin = a[i];
+    }
+  }
+  output.push_back(smax);
+  output.push_back(smin);
+  return output;
+}
