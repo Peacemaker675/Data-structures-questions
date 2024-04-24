@@ -1,0 +1,43 @@
+#include <vector>
+using namespace std;
+
+vector<int> sortedArray(vector<int> a, vector<int> b) {
+    int i = 0, j = 0;
+    int p = a.size();
+    int q = b.size();
+    vector<int> c;
+
+    while (i < p && j < q) {
+        if (a[i] < b[j]) {
+            if (c.empty() || c.back() != a[i]) {
+                c.push_back(a[i]);
+            }
+            i++;
+        } else if (a[i] > b[j]) {
+            if (c.empty() || c.back() != b[j]) {
+                c.push_back(b[j]);
+            }
+            j++;
+        } else {
+            if (c.empty() || c.back() != a[i]) {
+                c.push_back(a[i]);
+            }
+            i++;
+            j++;
+        }
+    }
+    while (i < p) {
+        if (c.empty() || c.back() != a[i]) {
+            c.push_back(a[i]);
+        }
+        i++;
+    }
+    while (j < q) {
+        if (c.empty() || c.back() != b[j]) {
+            c.push_back(b[j]);
+        }
+        j++;
+    }
+
+    return c;
+}
