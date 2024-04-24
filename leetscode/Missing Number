@@ -1,0 +1,24 @@
+class Solution {
+public:
+    int missingNumber(vector<int>& nums) {
+        int sum=0;
+        int accsum;
+        int max= INT_MIN;
+        int indicator=0;
+        for(int i=0;i<nums.size();i++){
+            if(nums[i]==0){
+                indicator++;
+            }
+            if(nums[i]>max){
+                max=nums[i];
+            }
+            sum+=nums[i];
+        }
+        accsum=max*(max+1)/2;
+        int missingNumber= accsum-sum;
+        if(missingNumber==0 && indicator==1){
+            return max+1;
+        }
+        return missingNumber;
+    }
+};
