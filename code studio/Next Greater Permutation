@@ -1,0 +1,31 @@
+vector<int> nextGreaterPermutation(vector<int> &A) {
+    int n=A.size();
+    int brkpt=-1;
+    for(int i=n-2;i>=0;i--){
+        if(A[i]<A[i+1]){
+            brkpt=i;
+            break;
+        }
+    }
+    if(brkpt==-1){
+        reverse(A.begin(),A.end());
+        return A;
+    }
+    for(int i=n-1;i>brkpt;i--){
+        if(A[i]>A[brkpt]){
+            swap(A[i],A[brkpt]);
+            break;
+        }
+    }
+    reverse(A.begin()+brkpt+1,A.end());
+    return A;
+
+}
+
+
+//stl function
+
+vector<int> nextGreaterPermutation(vector<int> &A) {
+    next_permutation(A.begin(),A.end());
+    return A;
+}
