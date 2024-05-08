@@ -1,0 +1,17 @@
+vector<int> superiorElements(vector<int>&a) {
+    int n=a.size();
+    int i=n-1;
+    int j=i-1;
+    vector<int> ans;
+    ans.push_back(a[i]);
+    while(j>=0 && i>0){
+        if(a[j]>a[i]){
+            ans.push_back(a[j]);
+            i=j;
+            j--;;
+        }else{
+            j--;
+        }
+    }
+    return ans;
+}
