@@ -1,0 +1,31 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+void setZeros(vector<vector<int>> &matrix) {
+    int rows = matrix.size();
+    int cols = matrix[0].size();
+
+    unordered_set<int> zeroedRows;
+    unordered_set<int> zeroedCols;
+
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            if (matrix[i][j] == 0) {
+                zeroedRows.insert(i);
+                zeroedCols.insert(j);
+            }
+        }
+    }
+
+    for (int row : zeroedRows) {
+        for (int j = 0; j < cols; j++) {
+            matrix[row][j] = 0;
+        }
+    }
+
+    for (int col : zeroedCols) {
+        for (int i = 0; i < rows; i++) {
+            matrix[i][col] = 0;
+        }
+    }
+}
