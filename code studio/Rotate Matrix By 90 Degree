@@ -1,0 +1,22 @@
+#include <bits/stdc++.h>
+vector<vector<int>> rotateMatrix(vector<vector<int>> &matrix) {
+  int n = matrix.size();
+  for (int i = 0; i < n; i++) {
+    for (int j = i; j < n; j++) {
+      swap(matrix[i][j], matrix[j][i]);
+    }
+  }
+  int first = 0;
+  int last = n - 1;
+  for (int j = 0; j < n; j++) {
+    if (first < last) {
+      swap(matrix[first][j], matrix[last][j]);
+      if (j == n - 1) {
+        first++;
+        last--;
+        j = -1;
+      }
+    }
+  }
+  return matrix;
+}
